@@ -4,10 +4,19 @@
 #include <iostream>
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include <cmath>
 
 double fn(double x)
 {
     return pow(M_E, x * x);
+    // return x*x;
+    //return x;
+    //if (x == 0)
+    //{
+    //    return 1;
+    //}
+
+    //return sin(x) / x;
 }
 
 double approximateValue(double a, double b, int n, double (*f)(double))
@@ -26,6 +35,11 @@ double approximateValue(double a, double b, int n, double (*f)(double))
 
 double RungeMethod(double a, double b, double (*f)(double), double margin) 
 {
+    if (a == b)
+    {
+        return 0;
+    }
+
     int h = 2;
     int h2 = 4;
 
@@ -58,14 +72,16 @@ void log()
     do
     {
         std::cout << RungeMethod(0, x, fn, 0.0001) << std::endl;
-        x += 0.1;
-    } while (x <= 1);
+        x += 1;
+    } while (x <= 2);
 }
 
 int main()
 {
-    // std::cout << RungeMethod(0, 1, fn, 0.0001);
-    log();
+     //std::cout << 2 * RungeMethod(0, 10, fn, 0.1);
+     std::cout << RungeMethod(0, 1, fn, 0.001);
+     // log(); 
+     return 1;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
